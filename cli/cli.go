@@ -5,6 +5,8 @@ import (
 	"fmt"
 	"io"
 	"os"
+
+	"github.com/hskwakr/todayfile/todayfile"
 )
 
 const (
@@ -28,6 +30,8 @@ func (c *CLI) Run(args []string) int {
 	if r := c.parse(args); r != ExitCodeOK {
 		return r
 	}
+
+	todayfile.Create()
 
 	return ExitCodeOK
 }
