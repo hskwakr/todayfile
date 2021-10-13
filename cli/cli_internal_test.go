@@ -30,9 +30,9 @@ func TestParse(t *testing.T) {
 
 		t.Run(test.name, func(t *testing.T) {
 			t.Parallel()
-
 			args := strings.Split(test.in, " ")
 			got := app.parse(args)
+
 			if got != test.want {
 				t.Errorf("ExitStatus: %d, want: %d",
 					got,
