@@ -20,10 +20,6 @@ const (
 
 type CLI struct {
 	OutStream, ErrStream io.Writer
-	args
-}
-
-type args struct {
 }
 
 func (c *CLI) Run(args []string) int {
