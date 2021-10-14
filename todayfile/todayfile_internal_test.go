@@ -23,6 +23,7 @@ func TestToday(t *testing.T) {
 	}
 
 	t.Parallel()
+
 	for _, v := range tests {
 		test := v
 
