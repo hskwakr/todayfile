@@ -10,9 +10,11 @@ var now = time.Now()
 
 // Create a file with the name of today's date.
 func Create() error {
-	_, err := os.Create(today() + ".txt")
+	if _, err := os.Create(today() + ".txt"); err != nil {
+		return fmt.Errorf("failed to create file: %w", err)
+	}
 
-	return fmt.Errorf("failed to create file: %v", err)
+	return nil
 }
 
 // return the date of today.
