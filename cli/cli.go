@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"log"
 	"os"
 
 	"github.com/hskwakr/todayfile/todayfile"
@@ -13,9 +14,9 @@ const (
 	ApplicationName = "todayfile"
 
 	ExitCodeOK               = 0
-	ExitCodeParseFlagError   = 0
-	ExitCodeArgumentsError   = 0
-	ExitCodeApplicationError = 0
+	ExitCodeParseFlagError   = 1
+	ExitCodeArgumentsError   = 1
+	ExitCodeApplicationError = 1
 )
 
 type CLI struct {
@@ -27,7 +28,12 @@ func (c *CLI) Run(args []string) int {
 		return r
 	}
 
-	todayfile.Create()
+	err := todayfile.Create()
+	if err != nil {
+		log.Println(err)
+
+		return ExitCodeApplicationError
+	}
 
 	return ExitCodeOK
 }
