@@ -8,14 +8,17 @@ import (
 var now = time.Now()
 
 // Create a file with the name of today's date.
-func Create() {
-	os.Create(today() + ".txt")
+func Create() error {
+	_, err := os.Create(today() + ".txt")
+
+	return err
 }
 
 // return the date of today.
 func today() string {
-	t := now
 	const layout = "2006-01-02"
+
+	t := now
 
 	return t.Format(layout)
 }
