@@ -1,6 +1,7 @@
 package todayfile
 
 import (
+	"fmt"
 	"os"
 	"time"
 )
@@ -11,7 +12,7 @@ var now = time.Now()
 func Create() error {
 	_, err := os.Create(today() + ".txt")
 
-	return err
+	return fmt.Errorf("failed to create file: %v", err)
 }
 
 // return the date of today.
