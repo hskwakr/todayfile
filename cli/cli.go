@@ -4,6 +4,7 @@ import (
 	"flag"
 	"fmt"
 	"io"
+	"log"
 	"os"
 
 	"github.com/hskwakr/todayfile/todayfile"
@@ -13,17 +14,13 @@ const (
 	ApplicationName = "todayfile"
 
 	ExitCodeOK               = 0
-	ExitCodeParseFlagError   = 0
-	ExitCodeArgumentsError   = 0
-	ExitCodeApplicationError = 0
+	ExitCodeParseFlagError   = 1
+	ExitCodeArgumentsError   = 1
+	ExitCodeApplicationError = 1
 )
 
 type CLI struct {
 	OutStream, ErrStream io.Writer
-	args
-}
-
-type args struct {
 }
 
 func (c *CLI) Run(args []string) int {
@@ -31,7 +28,11 @@ func (c *CLI) Run(args []string) int {
 		return r
 	}
 
-	todayfile.Create()
+	if err := todayfile.Create(); err != nil {
+		log.Println(err)
+
+		return ExitCodeApplicationError
+	}
 
 	return ExitCodeOK
 }

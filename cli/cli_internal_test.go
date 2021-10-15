@@ -25,6 +25,8 @@ func TestParse(t *testing.T) {
 		ErrStream: errStream,
 	}
 
+	t.Parallel()
+
 	for _, v := range tests {
 		test := v
 
