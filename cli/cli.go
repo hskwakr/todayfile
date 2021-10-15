@@ -28,8 +28,7 @@ func (c *CLI) Run(args []string) int {
 		return r
 	}
 
-	err := todayfile.Create()
-	if err != nil {
+	if err := todayfile.Create(); err != nil {
 		log.Println(err)
 
 		return ExitCodeApplicationError
