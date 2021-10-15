@@ -1,2 +1,2 @@
 # todayfile
-Create a file with the name of today's date.
+Create a txt file with the name of today's date.
