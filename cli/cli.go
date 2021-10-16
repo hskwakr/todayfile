@@ -6,6 +6,7 @@ import (
 	"io"
 	"log"
 	"os"
+	"time"
 
 	"github.com/hskwakr/todayfile/todayfile"
 )
@@ -28,7 +29,7 @@ func (c *CLI) Run(args []string) int {
 		return r
 	}
 
-	if err := todayfile.Create(); err != nil {
+	if err := todayfile.Create(todayfile.Date(time.Now()) + ".txt"); err != nil {
 		log.Println(err)
 
 		return ExitCodeApplicationError
