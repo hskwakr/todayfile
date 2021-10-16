@@ -1,16 +1,17 @@
 package main
 
 import (
+	"log"
 	"os"
+	"time"
 
-	"github.com/hskwakr/todayfile/cli"
+	"github.com/hskwakr/todayfile/todayfile"
 )
 
 func main() {
-	app := &cli.CLI{
-		OutStream: os.Stdout,
-		ErrStream: os.Stderr,
+	if err := todayfile.Create(todayfile.Date(time.Now()) + ".txt"); err != nil {
+		log.Fatal(err)
 	}
 
-	os.Exit(app.Run(os.Args))
+	os.Exit(0)
 }
