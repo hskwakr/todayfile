@@ -78,8 +78,14 @@ func TestCreate_ShouldNotOverwriteFile(t *testing.T) {
 
 	fn := "1992-01-02.txt"
 
-	for _, test := range tests {
+	t.Parallel()
+
+	for _, v := range tests {
+		test := v
+
 		t.Run(test.name, func(t *testing.T) {
+			t.Parallel()
+
 			if success := makeFakeFile(fn, test.in); !success {
 				t.Errorf("failed to creat fake file")
 			}
