@@ -6,11 +6,9 @@ import (
 	"time"
 )
 
-var now = time.Now()
-
 // Create a file with the name of today's date.
 func Create() error {
-	name := today() + ".txt"
+	name := today(time.Now()) + ".txt"
 
 	// if there is a file, do nothing.
 	if _, err := os.Stat(name); err == nil {
@@ -25,10 +23,8 @@ func Create() error {
 }
 
 // return the date of today.
-func today() string {
+func today(t time.Time) string {
 	const layout = "2006-01-02"
-
-	t := now
 
 	return t.Format(layout)
 }

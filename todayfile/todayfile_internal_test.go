@@ -5,10 +5,6 @@ import (
 	"time"
 )
 
-func fakeDate(t time.Time) {
-	now = t
-}
-
 func TestToday(t *testing.T) {
 	tests := []struct {
 		name string
@@ -30,8 +26,7 @@ func TestToday(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			t.Parallel()
 
-			fakeDate(test.in)
-			got := today()
+			got := today(test.in)
 			if got != test.want {
 				t.Errorf("got: %v, want: %v", got, test.want)
 			}
