@@ -5,7 +5,7 @@ import (
 	"time"
 )
 
-func TestToday(t *testing.T) {
+func TestDate(t *testing.T) {
 	tests := []struct {
 		name string
 		in   time.Time
@@ -26,7 +26,7 @@ func TestToday(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			t.Parallel()
 
-			got := today(test.in)
+			got := Date(test.in)
 			if got != test.want {
 				t.Errorf("got: %v, want: %v", got, test.want)
 			}
