@@ -6,7 +6,7 @@ import (
 	"time"
 )
 
-// Create a file with the name of today's date.
+// Create a file with the name of given date.
 func Create(name string) error {
 	// if the file already exists, do nothing.
 	if _, err := os.Stat(name); err == nil {
