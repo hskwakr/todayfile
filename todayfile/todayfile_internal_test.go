@@ -36,7 +36,7 @@ func TestDate(t *testing.T) {
 	}
 }
 
-func makeFakeFile(name string, msg string) bool {
+func createFakeFile(name string, msg string) bool {
 	const mode = 0644
 
 	if err := os.WriteFile(name, []byte(msg), mode); err != nil {
@@ -86,8 +86,8 @@ func TestCreate_ShouldNotOverwriteFile(t *testing.T) {
 		t.Run(test.name, func(t *testing.T) {
 			t.Parallel()
 
-			if success := makeFakeFile(fn, test.in); !success {
-				t.Errorf("failed to creat fake file")
+			if success := createFakeFile(fn, test.in); !success {
+				t.Errorf("failed to create fake file")
 			}
 
 			if err := Create(fn); err != nil {
